@@ -2,12 +2,13 @@ import discord
 from discord.ext import commands
 import os
 
-bot = commands.Bot(command_prefix='!')
+Bot = commands.Bot(command_prefix='!')
+Bot.remove_command('help')
 
-@bot.command(pass_context=True) #разрешаем передавать агрументы
+@Bot.command(pass_context=True) #разрешаем передавать агрументы
 async def test(ctx, arg): #создаем асинхронную фунцию бота
     await ctx.send(arg) #отправляем обратно аргумент
   
 token = os.environ.get('BOT_TOKEN')
 
-bot.run(token)
+Bot.run(str(token))
